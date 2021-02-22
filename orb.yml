@@ -1,0 +1,26 @@
+version: 2.1
+
+description: Installs and runs the Datadog Agent in the background
+display:
+  home_url: "https://datadoghq.dev/ciapp-alpha-docs/"
+
+commands:
+      setup:
+        description: "Installs and starts the Datadog Agent"
+        steps:
+          - run:
+              name: Install and start the Datadog Agent
+              command: |
+                DD_API_KEY=${DD_API_KEY} DD_AGENT_MAJOR_VERSION=${DD_AGENT_MAJOR_VERSION-7} DD_SITE=${DD_SITE-datadoghq.com} \
+                  DD_HOSTNAME="none" DD_INSTALL_ONLY="true" \
+                  bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+                sudo find /etc/datadog-agent/conf.d/ -iname "*.yaml.default" -delete
+                sudo service datadog-agent start
+              working_directory: /tmp
+      stop:
+        description: "Gracefully stops the Datadog Agent"
+        steps:
+          - run:
+              name: Gracefully stop the Datadog Agent
+              command: sudo service datadog-agent stop
+              when: always
