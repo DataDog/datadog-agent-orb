@@ -7,7 +7,7 @@ CircleCI Orb for running the Datadog Agent
 version: 2.1
 
 orbs:
-  datadog-agent: datadog/agent@0.1
+  datadog-agent: datadog/agent@0.0.1
 
 jobs:
   build:
