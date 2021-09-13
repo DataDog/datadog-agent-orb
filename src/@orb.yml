@@ -4,25 +4,3 @@ description: Installs and runs the Datadog Agent in the background to be used to
 display:
   home_url: "https://docs.datadoghq.com/continuous_integration/"
   source_url: "https://www.github.com/DataDog/datadog-agent-orb"
-
-examples:
-  ci-visibility:
-    description: |
-      Use the Datadog Agent in the background to report tests instrumented with the CI Visibility product
-    usage:
-      jobs:
-        build:
-          docker:
-            - image: your-image
-          steps:
-            - checkout
-            - datadog-agent/setup
-            - run: make test
-            - datadog-agent/stop
-      orbs:
-        datadog-agent: datadog/agent@x.y.z
-      version: 2.1
-      workflows:
-        your-workflow:
-          jobs:
-            - build
