@@ -1,0 +1,19 @@
+description: |
+  Use the Datadog Agent in the background to report tests instrumented with the CI Visibility product
+usage:
+  version: 2.1
+  jobs:
+    build:
+      docker:
+        - image: your-image
+      steps:
+        - checkout
+        - datadog-agent/setup
+        - run: make test
+        - datadog-agent/stop
+  orbs:
+    datadog-agent: datadog/agent@x.y.z
+  workflows:
+    your-workflow:
+      jobs:
+        - build
