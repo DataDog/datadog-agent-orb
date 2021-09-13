@@ -8,7 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Move to using the circleci orb SDK
  - Parameterize commands
 
-
+## [2.0.0] - 2021-09-14
+### Added
+    - Paramerized the commands inputs
+### Changed
+    - Moved to use the orb SDK
+### Removed
+    - Environemental variables for Data dog API key, site and agent version.
 
 <!-- ## [1.0.0] - YYYY-MM-DD
 ### Added
