@@ -1,5 +1,5 @@
 StopAgent() {
-    if [ "$(echo "$UID")" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
+    if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
     $SUDO service datadog-agent stop
 }
 
