@@ -29,9 +29,12 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      # "greet" is a sample command packaged with this orb config.
-      # This sample integration test will run as long as the greet command exists. Once you remove the greet command you should remove this line.
-      # Push new changes first, before adding new tests to your config.
+      # Check that we can start and stop the agent
+      - agent/setup:
+          dd_agent_major_version: "7"
+          dd_api_key: $DATADOG_API_KEY
+          dd_site: $DATADOG_SITE
+      - agent/stop
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
