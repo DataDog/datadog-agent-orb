@@ -1,6 +1,8 @@
 version: 2.1
 
-description: Installs and runs the Datadog Agent in the background to be used to report tests instrumented with the CI Visibility product.
+description: >
+  Installs and runs the Datadog Agent in the background to be used to report tests instrumented with the CI Visibility product.
+  For the command to work the image running it must have `curl` installed.
 display:
   home_url: "https://docs.datadoghq.com/continuous_integration/"
   source_url: "https://www.github.com/DataDog/datadog-agent-orb"
