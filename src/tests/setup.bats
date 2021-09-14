@@ -9,5 +9,6 @@ setup() {
 
 @test '1: Check agent installed and running' {
     Install
-    datadog-agent status # If the agent did not install and is not running this will fail
+    if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
+    $SUDO datadog-agent status # If the agent did not install and is not running this will fail
 }

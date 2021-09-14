@@ -16,6 +16,7 @@ setup() {
     fi
 
     StopAgent
-    run datadog-agent status # If the agent did not install and is not running this will fail
+    if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
+    run $SUDO datadog-agent status # If the agent did not install and is not running this will fail
     [ "$status" -ne 0 ]
 }
