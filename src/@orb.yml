@@ -5,4 +5,4 @@ description: >
   For the command to work the image running it must have `curl` installed.
 display:
   home_url: "https://docs.datadoghq.com/continuous_integration/"
-  source_url: "https://www.github.com/DataDog/datadog-agent-orb"
+  source_url: "https://github.com/DataDog/datadog-agent-orb"

@@ -10,7 +10,7 @@ CircleCI Orb for running the DataDog Agent to report test for [CI Test visibilit
 version: 2.1
 
 orbs:
-  datadog-agent: datadog/agent@2.0.0
+  datadog-agent: datadog/agent@2
 
 jobs:
   build:
@@ -18,7 +18,10 @@ jobs:
       - image: circleci/python
     steps:
       - checkout
-      - datadog-agent/setup
+      - datadog-agent/setup:
+          agent_major_version: "7"
+          api_key: ${DATADOG_API_KEY}
+          site: ${DATADOG_SITE}
       - run: make test
       - datadog-agent/stop
 ```
