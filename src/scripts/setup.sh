@@ -1,6 +1,6 @@
 Install() {
     DD_API_KEY=${DD_API_KEY} DD_AGENT_MAJOR_VERSION=${DD_AGENT_MAJOR_VERSION} DD_SITE=${DD_SITE} \
-        DD_HOSTNAME="none" DD_INSTALL_ONLY="true" \
+        DD_HOSTNAME="none" DD_INSTALL_ONLY="true" DD_APM_ENABLED="true" \
         bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 
     if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
