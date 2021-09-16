@@ -1,0 +1,7 @@
+description: "Gracefully stop the Datadog Agent"
+parameters:
+steps:
+  - run:
+      when: always
+      name: Gracefully stop the Datadog Agent
+      command: <<include(scripts/stop.sh)>>
