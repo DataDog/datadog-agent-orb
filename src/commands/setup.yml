@@ -10,7 +10,7 @@ parameters:
   site:
     type: string
     description: The datadog site to send data to
-    default: "https://app.datadoghq.com"
+    default: "datadoghq.com"
 steps:
   - run:
       environment:
