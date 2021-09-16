@@ -10,7 +10,7 @@ CircleCI Orb for running the DataDog Agent to report test for [CI Test visibilit
 version: 2.1
 
 orbs:
-  datadog-agent: datadog/agent@2
+  datadog-agent: datadog/agent@3
 
 jobs:
   build:
