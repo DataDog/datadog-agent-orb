@@ -20,8 +20,8 @@ jobs:
       - checkout
       - datadog-agent/setup:
           agent_major_version: "7"
-          api_key: ${DATADOG_API_KEY}
-          site: ${DATADOG_SITE}
+          api_key: DATADOG_API_KEY
+          site: datadoghq.com
       - run: make test
       - datadog-agent/stop
 ```

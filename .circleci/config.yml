@@ -32,8 +32,8 @@ jobs:
       # Check that we can start and stop the agent
       - agent/setup:
           agent_major_version: "7"
-          api_key: $DATADOG_API_KEY
-          site: $DATADOG_SITE
+          api_key: DD_API_KEY
+          site: datad0g.com
       - agent/stop
 
 workflows:

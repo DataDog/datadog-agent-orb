@@ -1,8 +1,9 @@
 description: "Installs and starts the Datadog Agent"
 parameters:
   api_key:
-    type: string
+    type: env_var_name
     description: The DataDog API key used to send data to Datadog
+    default: DD_API_KEY
   agent_major_version:
     type: string
     description: The major version of the agent to use
@@ -14,9 +15,9 @@ parameters:
 steps:
   - run:
       environment:
-        DD_API_KEY: <<parameters.api_key>>
-        DD_AGENT_MAJOR_VERSION: <<parameters.agent_major_version>>
-        DD_SITE: <<parameters.site>>
+        PARAM_DD_API_KEY: <<parameters.api_key>>
+        PARAM_DD_AGENT_MAJOR_VERSION: <<parameters.agent_major_version>>
+        PARAM_DD_SITE: <<parameters.site>>
       name: Install and start the Datadog Agent
       working_directory: /tmp
       command: <<include(scripts/setup.sh)>>
