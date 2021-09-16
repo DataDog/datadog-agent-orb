@@ -6,7 +6,6 @@ Install() {
 
     if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
     $SUDO find /etc/datadog-agent/conf.d/ -iname "*.yaml.default" -delete
-    $SUDO echo "apm_config:\n  enabled: true" >> /etc/datadog-agent/datadog.yaml
     $SUDO service datadog-agent start
 }
 
