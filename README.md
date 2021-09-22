@@ -1,6 +1,6 @@
 # datadog-agent-orb
 
-[![CircleCI Build Status](https://circleci.com/gh/DataDog/datadog-agent-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/datadog/datadog-agent-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/agent.svg)](https://circleci.com/orbs/registry/orb/datadog/datadog-agent-orb) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/datadog/datadog-agent-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
+[![CircleCI Build Status](https://circleci.com/gh/DataDog/datadog-agent-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/datadog/datadog-agent-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/agent.svg)](https://circleci.com/developer/orbs/orb/datadog/agent) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/datadog/datadog-agent-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
 CircleCI Orb for running the DataDog Agent to report test for [CI Test visibility](https://docs.datadoghq.com/continuous_integration/setup_tests/)
 
