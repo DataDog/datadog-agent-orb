@@ -6,7 +6,13 @@ Install() {
 
     if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
     $SUDO find /etc/datadog-agent/conf.d/ -iname "*.yaml.default" -delete
-    $SUDO service datadog-agent start
+
+    if ! command -v service &> /dev/null
+    then
+        $SUDO systemctl start datadog-agent
+    else
+        $SUDO service datadog-agent start
+    fi
 }
 
 # Will not run if sourced for bats-core tests.

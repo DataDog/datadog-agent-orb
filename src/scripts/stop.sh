@@ -1,6 +1,11 @@
 StopAgent() {
     if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
-    $SUDO service datadog-agent stop
+    if ! command -v service &> /dev/null
+    then
+        $SUDO systemctl stop datadog-agent
+    else
+        $SUDO service datadog-agent stop
+    fi
 }
 
 

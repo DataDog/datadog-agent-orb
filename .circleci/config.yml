@@ -170,10 +170,10 @@ workflows:
       - ubuntu-integration-18_04
       - ubuntu-integration-20_04
       - ubuntu-integration-21_04
-      - centos-8
-      - centos-7
-      - fedora-34
-      - fedora-33
+      # - centos-8
+      # - centos-7
+      # - fedora-34
+      # - fedora-33
       - debian-buster
       - debian-bullseye
       # Publish a semver version of the orb. relies on
