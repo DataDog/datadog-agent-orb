@@ -67,7 +67,7 @@ jobs:
     docker:
       - image: alpine:3.14
     steps:
-      - run: apk --no-cache add curl bash
+      - run: apk --no-cache add curl bash sudo
       - agent/setup:
           site: datad0g.com
       - agent/stop
