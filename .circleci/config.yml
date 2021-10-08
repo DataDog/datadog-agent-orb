@@ -62,15 +62,35 @@ jobs:
           site: datad0g.com
       - agent/stop
 
-  # Test in alpine
-  alpine-3_14:
+  centos-8:
     docker:
-      - image: alpine:3.14
+      - image: centos:8
     steps:
-      - run: apk --no-cache add curl bash sudo
+      - run: apt-get update -y
+      - run: apt-get -y install curl
       - agent/setup:
           site: datad0g.com
       - agent/stop
+  centos-7:
+    docker:
+      - image: centos:7
+    steps:
+      - run: apt-get update -y
+      - run: apt-get -y install curl
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+
+  # TODO currently alpine is not supported
+  # Test in alpine
+  # alpine-3_14:
+  #   docker:
+  #     - image: alpine:3.14
+  #   steps:
+  #     - run: apk --no-cache add curl bash sudo
+  #     - agent/setup:
+  #         site: datad0g.com
+  #     - agent/stop
 
   # Test in debian
   debian-buster:
@@ -85,6 +105,25 @@ jobs:
   debian-bullseye:
     docker:
       - image: debian:11-slim
+    steps:
+      - run: apt-get update -y
+      - run: apt-get -y install curl
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+
+  fedora-34:
+    docker:
+      - image: fedora:34
+    steps:
+      - run: apt-get update -y
+      - run: apt-get -y install curl
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+  fedora-33:
+    docker:
+      - image: fedora:33
     steps:
       - run: apt-get update -y
       - run: apt-get -y install curl
@@ -135,7 +174,10 @@ workflows:
       - ubuntu-integration-18_04
       - ubuntu-integration-20_04
       - ubuntu-integration-21_04
-      - alpine-3_14
+      - centos-8
+      - centos-7
+      - fedora-34
+      - fedora-33
       - debian-buster
       - debian-bullseye
       # Publish a semver version of the orb. relies on
