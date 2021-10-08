@@ -66,8 +66,7 @@ jobs:
     docker:
       - image: centos:8
     steps:
-      - run: apt-get update -y
-      - run: apt-get -y install curl
+      - run: yum -y install curl findutils initscripts
       - agent/setup:
           site: datad0g.com
       - agent/stop
@@ -75,8 +74,7 @@ jobs:
     docker:
       - image: centos:7
     steps:
-      - run: apt-get update -y
-      - run: apt-get -y install curl
+      - run: yum -y install curl findutils initscripts
       - agent/setup:
           site: datad0g.com
       - agent/stop
@@ -116,8 +114,7 @@ jobs:
     docker:
       - image: fedora:34
     steps:
-      - run: apt-get update -y
-      - run: apt-get -y install curl
+      - run: yum -y install curl findutils initscripts
       - agent/setup:
           site: datad0g.com
       - agent/stop
@@ -125,8 +122,7 @@ jobs:
     docker:
       - image: fedora:33
     steps:
-      - run: apt-get update -y
-      - run: apt-get -y install curl
+      - run: yum -y install curl findutils initscripts
       - agent/setup:
           site: datad0g.com
       - agent/stop
