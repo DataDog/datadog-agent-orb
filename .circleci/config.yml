@@ -28,11 +28,67 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - checkout
       # Check that we can start and stop the agent
       - agent/setup:
-          agent_major_version: "7"
-          api_key: DD_API_KEY
+          site: datad0g.com
+      - agent/stop
+
+  # Test in ubuntu
+  ubuntu-integration-18.04:
+    docker:
+      - image: ubuntu:18.04
+    steps:
+      - run: apt-get update -y
+      - run: apt-get -y install curl
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+  ubuntu-integration-20.04:
+    docker:
+      - image: ubuntu:20.04
+    steps:
+      - run: apt-get update -y
+      - run: apt-get -y install curl
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+  ubuntu-integration-21.04:
+    docker:
+      - image: ubuntu:21.04
+    steps:
+      - run: apt-get update -y
+      - run: apt-get -y install curl
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+
+  # Test in alpine
+  alpine-3.14:
+    docker:
+      - image: alpine:3.14
+    steps:
+      - run: apk --no-cache add curl
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+    
+  # Test in debian
+  debian-buster:
+    docker:
+      - image: debian:10.10-slim
+    steps:
+      - run: apt-get update -y
+      - run: apt-get -y install curl
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+  debian-bullseye:
+    docker:
+      - image: debian:11-slim
+    steps:
+      - run: apt-get update -y
+      - run: apt-get -y install curl
+      - agent/setup:
           site: datad0g.com
       - agent/stop
 
@@ -76,6 +132,12 @@ workflows:
     jobs:
       # Run any integration tests defined within the `jobs` key.
       - integration-test-1
+      - ubuntu-integration-18.04
+      - ubuntu-integration-20.04
+      - ubuntu-integration-21.04
+      - alpine-3.14
+      - debian-buster
+      - debian-bullseye
       # Publish a semver version of the orb. relies on
       # the commit subject containing the text "[semver:patch|minor|major|skip]"
       # as that will determine whether a patch, minor or major
