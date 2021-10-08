@@ -34,7 +34,7 @@ jobs:
       - agent/stop
 
   # Test in ubuntu
-  ubuntu-integration-18.04:
+  ubuntu-integration-18_04:
     docker:
       - image: ubuntu:18.04
     steps:
@@ -43,7 +43,7 @@ jobs:
       - agent/setup:
           site: datad0g.com
       - agent/stop
-  ubuntu-integration-20.04:
+  ubuntu-integration-20_04:
     docker:
       - image: ubuntu:20.04
     steps:
@@ -52,7 +52,7 @@ jobs:
       - agent/setup:
           site: datad0g.com
       - agent/stop
-  ubuntu-integration-21.04:
+  ubuntu-integration-21_04:
     docker:
       - image: ubuntu:21.04
     steps:
@@ -63,7 +63,7 @@ jobs:
       - agent/stop
 
   # Test in alpine
-  alpine-3.14:
+  alpine-3_14:
     docker:
       - image: alpine:3.14
     steps:
@@ -132,10 +132,10 @@ workflows:
     jobs:
       # Run any integration tests defined within the `jobs` key.
       - integration-test-1
-      - ubuntu-integration-18.04
-      - ubuntu-integration-20.04
-      - ubuntu-integration-21.04
-      - alpine-3.14
+      - ubuntu-integration-18_04
+      - ubuntu-integration-20_04
+      - ubuntu-integration-21_04
+      - alpine-3_14
       - debian-buster
       - debian-bullseye
       # Publish a semver version of the orb. relies on
