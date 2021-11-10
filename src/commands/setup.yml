@@ -10,7 +10,7 @@ parameters:
     default: "7"
   site:
     type: string
-    description: The datadog site to send data to
+    description: The datadog site to send data to. If the environment variable DD_SITE is set that will take preference.
     default: "datadoghq.com"
 steps:
   - run:

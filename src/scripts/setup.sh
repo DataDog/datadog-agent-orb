@@ -1,5 +1,10 @@
 Install() {
     PARAM_DD_API_KEY=$(eval echo "\$$PARAM_DD_API_KEY")
+
+    if [[ -z "${DD_SITE}" ]]; then
+        PARAM_DD_SITE=${DD_SITE}
+    fi
+
     DD_API_KEY=${PARAM_DD_API_KEY} DD_AGENT_MAJOR_VERSION=${PARAM_DD_AGENT_MAJOR_VERSION} DD_SITE=${PARAM_DD_SITE} \
         DD_HOSTNAME="none" DD_INSTALL_ONLY="true" DD_APM_ENABLED="true" \
         bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
