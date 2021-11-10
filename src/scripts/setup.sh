@@ -1,7 +1,7 @@
 Install() {
     PARAM_DD_API_KEY=$(eval echo "\$$PARAM_DD_API_KEY")
 
-    if [[ -z "${DD_SITE}" ]]; then
+    if [[ -n "${DD_SITE}" ]]; then
         PARAM_DD_SITE=${DD_SITE}
     fi
 
