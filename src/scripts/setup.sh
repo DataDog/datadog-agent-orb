@@ -19,7 +19,7 @@ Install() {
     exit_code=$?
     until [[ $attempts -ge 10 ||  $exit_code -eq 0 ]]; do
         attempts=$((attempts+1))
-        sleep_time=$((attempts*5))
+        sleep_time=$((attempts*10))
         echo "Waiting for agent to start up sleeping for ${sleep_time} seconds"
         sleep $sleep_time
 
