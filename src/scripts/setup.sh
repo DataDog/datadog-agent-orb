@@ -12,6 +12,24 @@ Install() {
     if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
     $SUDO find /etc/datadog-agent/conf.d/ -iname "*.yaml.default" -delete
     $SUDO service datadog-agent start
+
+    set +e
+    attempts=0
+    $SUDO datadog-agent health
+    exit_code=$?
+    until [[ $attempts -ge 10 ||  $exit_code -eq 0 ]]; do
+        attempts=$((attempts+1))
+        echo "Waiting for agent to start up sleeping for ${attempts} seconds"
+        sleep $attempts
+
+        $SUDO datadog-agent health
+        exit_code=$?
+    done
+
+    if [[ $exit_code -ne 0 ]]; then
+        echo "Could not start the agent"
+        exit 1
+    fi
 }
 
 # Will not run if sourced for bats-core tests.
