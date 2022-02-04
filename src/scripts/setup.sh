@@ -15,21 +15,19 @@ Install() {
 
     set +e
     attempts=0
-    $SUDO datadog-agent health
-    exit_code=$?
-    until [[ $attempts -ge 10 ||  $exit_code -eq 0 ]]; do
+
+    until attempts -eq 10 || $SUDO datadog-agent health; do
         attempts=$((attempts+1))
-        sleep_time=$(( attempts*10 < 60 ? attempts*10 : 60 ))
+        sleep_time=$(( attempts*5 < 30 ? attempts*5 : 30 ))
         echo "Waiting for agent to start up sleeping for ${sleep_time} seconds"
         sleep $sleep_time
-
-        $SUDO datadog-agent health
-        exit_code=$?
     done
 
-    if [[ $exit_code -ne 0 ]]; then
+    if [[ $attempts -eq 10 ]]; then
         echo "Could not start the agent"
-        exit $exit_code
+        exit 1
+    else
+        echo "Agent is ready"
     fi
 }
 
