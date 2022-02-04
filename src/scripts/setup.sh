@@ -16,7 +16,7 @@ Install() {
     set +e
     attempts=0
 
-    until attempts -eq 10 || $SUDO datadog-agent health; do
+    until [[ $attempts -eq 10 ]] || $SUDO datadog-agent health; do
         attempts=$((attempts+1))
         sleep_time=$(( attempts*5 < 30 ? attempts*5 : 30 ))
         echo "Waiting for agent to start up sleeping for ${sleep_time} seconds"
