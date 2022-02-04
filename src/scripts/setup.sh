@@ -29,7 +29,7 @@ Install() {
 
     if [[ $exit_code -ne 0 ]]; then
         echo "Could not start the agent"
-        exit 1
+        exit $exit_code
     fi
 }
 
