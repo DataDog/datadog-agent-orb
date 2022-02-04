@@ -35,6 +35,28 @@ jobs:
           api_key: DD_API_KEY
           site: datad0g.com
       - agent/stop
+  integration-test-ubuntu:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - run: apt update -y
+      - run: apt install curl -y
+      # Check that we can start and stop the agent
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
+  integration-test-debian:
+    docker:
+      - image: debian:latest
+    steps:
+      - checkout
+      - run: apt update -y
+      - run: apt install curl -y
+      # Check that we can start and stop the agent
+      - agent/setup:
+          site: datad0g.com
+      - agent/stop
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
@@ -76,6 +98,8 @@ workflows:
     jobs:
       # Run any integration tests defined within the `jobs` key.
       - integration-test-1
+      - integration-test-ubuntu
+      - integration-test-debian
       # Publish a semver version of the orb. relies on
       # the commit subject containing the text "[semver:patch|minor|major|skip]"
       # as that will determine whether a patch, minor or major
