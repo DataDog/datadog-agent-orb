@@ -4,11 +4,13 @@
 # DD_SITE
 
 setup() {
-    source ./src/scripts/setup.sh
+    source ./src/scripts/start.sh
+    source ./src/scripts/wait.sh
 }
 
 @test '1: Check agent installed and running' {
-    Install
+    Start
+	Wait
     if [ "$UID" = "0" ]; then export SUDO=''; else export SUDO='sudo'; fi
     $SUDO datadog-agent status # If the agent did not install and is not running this will fail
 }
