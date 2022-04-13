@@ -8,10 +8,12 @@ usage:
         - image: your-image
       steps:
         - checkout
-        - datadog-agent/setup:
+        - datadog-agent/start:
             agent_major_version: "7"
             api_key: DATADOG_API_KEY
             site: datadoghq.com
+        - run: make
+        - datadog-agent/wait
         - run: make test
         - datadog-agent/stop
   orbs:

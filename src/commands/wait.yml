@@ -1,0 +1,10 @@
+description: "Wait for the Datadog Agent"
+steps:
+  - run:
+      environment:
+        PARAM_DD_API_KEY: <<parameters.api_key>>
+        PARAM_DD_AGENT_MAJOR_VERSION: <<parameters.agent_major_version>>
+        PARAM_DD_SITE: <<parameters.site>>
+      name: Install and start the Datadog Agent
+      working_directory: /tmp
+      command: <<include(scripts/wait.sh)>>
