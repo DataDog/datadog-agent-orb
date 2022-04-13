@@ -1,20 +1,21 @@
 Wait() {
     set +e
     attempts=0
+    max_attempts=240
 
-    until [[ $attempts -eq 10 ]] || $SUDO datadog-agent health; do
-        attempts=$((attempts+1))
-        sleep_time=$(( attempts*5 < 30 ? attempts*5 : 30 ))
-        echo "Waiting for agent to start up sleeping for ${sleep_time} seconds"
-        sleep $sleep_time
+    until [[ $attempts -eq $max_attempts ]]; do
+      if $SUDO datadog-agent health; then
+        echo "Agent is ready"
+        exit 0
+      fi
+
+      attempts=$((attempts+1))
+      echo "Waiting for agent to start, attempt no. ${attempts}"
+      sleep 1
     done
 
-    if [[ $attempts -eq 10 ]]; then
-        echo "Could not start the agent"
-        exit 1
-    else
-        echo "Agent is ready"
-    fi
+    echo "Could not start the agent"
+    exit 1
 }
 
 # Will not run if sourced for bats-core tests.
