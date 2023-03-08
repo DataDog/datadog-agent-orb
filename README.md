@@ -14,7 +14,7 @@ orbs:
 
 jobs:
   build:
-    docker: 
+    docker:
       - image: circleci/python
     steps:
       - checkout
@@ -22,6 +22,7 @@ jobs:
           agent_major_version: "7"
           api_key: DATADOG_API_KEY
           site: datadoghq.com
+          background: true
       - run: make test
       - datadog-agent/stop
 ```
@@ -64,4 +65,3 @@ Example: `[semver:major]`
 * On merge, after manual approval, the orb will automatically be published to the Orb Registry.
 
 For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss](https://discuss.circleci.com/c/orbs).
-

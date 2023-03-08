@@ -12,6 +12,10 @@ parameters:
     type: string
     description: The datadog site to send data to. If the environment variable DD_SITE is set that will take preference.
     default: "datadoghq.com"
+  background:
+    type: boolean
+    description: Run setup in the background, allowing other commands to run in parallel.
+    default: false
 steps:
   - run:
       environment:
@@ -21,3 +25,4 @@ steps:
       name: Install and start the Datadog Agent
       working_directory: /tmp
       command: <<include(scripts/setup.sh)>>
+      background: <<parameters.background>>
