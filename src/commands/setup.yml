@@ -11,7 +11,7 @@ parameters:
   agent_minor_version:
     type: string
     description: The minor version of the agent to use
-    default: "54.1"
+    default: "latest"
   site:
     type: string
     description: The datadog site to send data to. If the environment variable DD_SITE is set that will take preference.

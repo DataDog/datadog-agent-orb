@@ -20,6 +20,7 @@ jobs:
       - checkout
       - datadog-agent/setup:
           agent_major_version: "7"
+          agent_minor_version: "latest"
           api_key: DATADOG_API_KEY
           site: datadoghq.com
       - run: make test
