@@ -34,6 +34,8 @@ Install() {
 # Will not run if sourced for bats-core tests.
 # View src/tests for more information.
 ORB_TEST_ENV="bats-core"
+echo "WARNING: This orb is deprecated and will be removed after January 31, 2025. Please use Agentless Mode. Read more in https://docs.datadoghq.com/tests/setup/"
+
 if [ "${0#*$ORB_TEST_ENV}" == "$0" ]; then
     Install
 fi
